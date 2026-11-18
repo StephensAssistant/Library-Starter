@@ -57,6 +57,14 @@ Run `python -B .github/scripts/run_release_preflight.py --starter-smoke` against
 
 ## Library knowledge graph
 
-Run `python .github/scripts/build_library_graph.py` from the root of your Library and open `outputs/library-knowledge-graph.html` in a browser. Refresh the file after adding or linking records. The HTML works offline and contains anonymous record counts and relationship topology. Keep it local unless you intend to share those details.
+Run `python .github/scripts/build_library_graph.py` from the root of your Library and open `Catalog/library-knowledge-graph.html` in a browser. Refresh the file after adding or linking records. The HTML works offline and contains anonymous record counts and relationship topology. Git ignores the generated file. Keep it local unless you intend to share those details.
 
-To retain a snapshot as a governed Artifact, follow the [Artifact creation guide](Artifacts/_HOW-TO-CREATE.md). Reserve separate IDs for the native HTML and its companion, then set the companion’s `stored_at` to the native path.
+### Set up a saved graph
+
+1. On `staging`, run the generator above. Reserve two consecutive ART IDs using [the reservation guide](.github/ID-RESERVATION.md).
+2. Copy the generated HTML into `Artifacts/` under its allocated native ID, for example `Artifacts/ART-0001-library-knowledge-graph.html` if that was the ID returned. Create its companion with the second ID using the [Artifact creation guide](Artifacts/_HOW-TO-CREATE.md). Set the companion’s `stored_at` to the native path.
+3. Validate and save the pair on `staging`. The starter’s renderer ships empty. The generated graph represents only the Library from which it was built.
+
+After adding or linking records, run **Refresh Library graph** from the default branch in GitHub Actions and supply the existing native HTML path. The workflow reads `staging`, validates the graph and refreshes the same file on `staging` when its content changes. It requires permission to push to `staging`. Review the result before publishing through your normal PR process.
+
+For a local refresh, run `python .github/scripts/build_library_graph.py --refresh-artifact YOUR_NATIVE_HTML_PATH` in a current `staging` checkout, then review and save the change. Refresh is explicit. A saved graph remains a snapshot until the workflow or local command is run.

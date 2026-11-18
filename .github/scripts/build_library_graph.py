@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Generate the offline Library graph from the destination checkout."""
 
+import argparse
 import json
 import re
 from pathlib import Path
@@ -10,7 +11,7 @@ from chat_utils import FILENAME_PATTERN
 
 
 TEMPLATE = Path('.github/templates/ART-0134-library-knowledge-graph.html')
-OUTPUT = Path('outputs/library-knowledge-graph.html')
+OUTPUT = Path('Catalog/library-knowledge-graph.html')
 PAYLOAD = re.compile(r'(<script id="library-graph-data" type="application/json">).*?(</script>)', re.S)
 CHAT_HEADING = re.compile(r'^### (CHAT-\d{4}) — [^\r\n]*', re.M)
 LINK_IDS = re.compile(r'\b[A-Z]+-\d{4}\b')
@@ -63,9 +64,23 @@ def render(template, topology):
     return PAYLOAD.sub(lambda match: f'{match[1]}{encoded}{match[2]}', template)
 
 
-def generate():
+def generate(artifact=None):
     root = library_scan.REPO_ROOT
     entries = library_scan.collect_entries()
+    output = OUTPUT
+    if artifact is not None:
+        if not re.fullmatch(r'Artifacts/ART-[0-9]{4}-[a-z0-9-]+\.html', artifact):
+            raise ValueError('Use the existing native ART HTML path in Artifacts/')
+        output = Path(artifact)
+        target = root / output
+        owners = [
+            entry for entry in entries.values()
+            if entry['fm'].get('type') == 'artifact' and entry['fm'].get('stored_at') == artifact
+        ]
+        if (len(owners) != 1 or not target.is_file() or target.is_symlink()
+                or not target.resolve().is_relative_to(root.resolve())
+                or 'name="library-graph-renderer"' not in target.read_text(encoding='utf-8')):
+            raise ValueError('Refresh requires an existing graph HTML with exactly one companion')
     for record_id, entry in library_scan.collect_native_artifact_entries(entries).items():
         path = entry['path']
         if not path.is_symlink() and path.is_file() and path.resolve().is_relative_to(root.resolve()):
@@ -73,13 +88,15 @@ def generate():
                 entries[record_id] = entry
     topology = build_topology(entries, chat_links(root))
     result = render((root / TEMPLATE).read_text(encoding='utf-8'), topology)
-    target = root / OUTPUT
+    target = root / output
     if target.is_symlink() or not target.resolve().is_relative_to(root.resolve()):
         raise ValueError('Graph output must be inside this Library')
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(result, encoding='utf-8', newline='\n')
-    print(f'{OUTPUT.as_posix()}: {len(topology["nodes"])} nodes, {len(topology["links"])} links')
+    print(f'{output.as_posix()}: {len(topology["nodes"])} nodes, {len(topology["links"])} links')
 
 
 if __name__ == '__main__':
-    generate()
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--refresh-artifact', metavar='ARTIFACT_PATH')
+    generate(parser.parse_args().refresh_artifact)

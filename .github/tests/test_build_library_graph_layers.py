@@ -15,6 +15,40 @@ import build_library_graph as graph
 
 
 class StarterGraphTest(unittest.TestCase):
+    def test_output_uses_approved_catalog_folder(self):
+        config = json.loads((ROOT / '.github/allowed-top-level-folders.json').read_text(encoding='utf-8'))
+        self.assertIn(graph.OUTPUT.parts[0], config['folders'])
+
+    def test_refresh_updates_only_existing_companioned_graph(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            for path in (graph.TEMPLATE, Path('.github/type-prefixes.json')):
+                target = root / path
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes((ROOT / path).read_bytes())
+            native = 'Artifacts/ART-9000-library-knowledge-graph.html'
+            target = root / native
+            target.parent.mkdir()
+            target.write_bytes((root / graph.TEMPLATE).read_bytes())
+            companion = root / 'Artifacts/ART-9001-synthetic.md'
+            with patch.object(graph.library_scan, 'REPO_ROOT', root):
+                with self.assertRaisesRegex(ValueError, 'exactly one companion'):
+                    graph.generate(native)
+                with self.assertRaisesRegex(ValueError, 'native ART HTML path'):
+                    graph.generate('../foreign.html')
+                companion.write_text(
+                    f'---\nid: ART-9001\ntype: artifact\nstored_at: {native}\nlinks: []\n---\n',
+                    encoding='utf-8',
+                )
+                before = companion.read_bytes()
+                graph.generate(native)
+                result = target.read_bytes()
+                self.assertNotEqual(result, (root / graph.TEMPLATE).read_bytes())
+                self.assertEqual(companion.read_bytes(), before)
+                graph.generate(native)
+                self.assertEqual(target.read_bytes(), result)
+                self.assertFalse((root / graph.OUTPUT).exists())
+
     def test_fresh_root_then_user_records(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
