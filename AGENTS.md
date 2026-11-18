@@ -167,9 +167,13 @@ When an approved connected GitHub app or MCP is available for the requested Libr
 
 When the Library owner has explicitly configured an approved review period, template, and canonical review record, capture verified work contributions in that record at meaningful checkpoints. Cite the owning record and distinguish delivery, feedback, acceptance limits, and open development gaps. Exclude unrelated personal work, deduplicate evidence, and keep the review open until the owner accepts finalisation. Do not invent ratings or commitments. Manager comments remain the manager's responsibility. Filing evidence grants no submit, send, schedule, validation or merge authority.
 
+Verify the exact review dates, role, reporting line and any objective changes from current evidence. Preserve established objectives and development gaps, and record completion or measurable savings only when supported. Preserve prior reviews and switch the active review only once the new period and objectives are confirmed.
+
 ## Optional service-desk-linked tickets
 
 When a configured service-desk connector is available and a canonical Ticket has an exact verified external reference, use the external ticket as the live operational source and the Library record for analysis, evidence and handoff. Retrieve only required fields. Reconcile conflicting facts and record the source and retrieval date. Verify access at the point of use. External mutations require explicit current-conversation authority and readback verification. Communications remain drafts for owner review and sending.
+
+A successful sign-in does not establish ticket access. Mark unavailable, denied, stale or contradictory evidence as a Gap. Reconcile status, priority, ownership, SLA and due dates, and customer contact with the external ticket while preserving conflicting Library history. Check the intended effect explicitly before any assignment, state change, note or reply.
 
 ## Context load
 - Read this file once at task start. Do not re-read it later in the same task unless the Library owner says it changed. </ref='7'>
