@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate an offline graph from the current owner's checked-out Library."""
+"""Generate the offline Library graph from the destination checkout."""
 
 import json
 import re
@@ -9,7 +9,7 @@ import library_scan
 from chat_utils import FILENAME_PATTERN
 
 
-TEMPLATE = Path('.github/templates/library-knowledge-graph.html')
+TEMPLATE = Path('.github/templates/ART-0134-library-knowledge-graph.html')
 OUTPUT = Path('outputs/library-knowledge-graph.html')
 PAYLOAD = re.compile(r'(<script id="library-graph-data" type="application/json">).*?(</script>)', re.S)
 CHAT_HEADING = re.compile(r'^### (CHAT-\d{4}) — [^\r\n]*', re.M)

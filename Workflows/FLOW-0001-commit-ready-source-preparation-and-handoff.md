@@ -19,6 +19,33 @@ tags: [workflow, library, commit-ready]
 
 This definition requires destination-specific qualification. Source repository approval and evidence do not transfer. The draft grants no execution authority.
 
+## Reading and precedence
+
+The workflow-json contract owns states and transitions. Its governing Playbooks own each component procedure. Historical construction and qualification notes record prior events only; they grant no current authority and cannot override the current contract. Any conflict between current requirements blocks the dependent action and enters PLAY-0069; do not choose a convenient interpretation.
+
+“Run Commit Ready” selects FLOW-0002. FLOW-0001 and PLAY-0059 provide source preparation only. The parent first assesses exact-current accepted-result reuse; only a complete authoritative eligible=false result enters preparation and validation. Unknown, missing or contradictory reuse evidence enters recovery, not the new-execution branch.
+
+For a required new validation, apply PLAY-0056 “Required route assessment before a blocker or permission question” before source effects and before any missing-capability or permission claim. Local checkers MAY use exact canonical file inputs without a checkout when their actual input requirements permit it. No new clone/worktree is implied or authorised. Record supported alternatives and the precise unmet requirement before a decision from the Library owner is requested.
+
+For attempt/phase continuation apply Playbooks/PLAY-0059-commit-ready.md, Manual FLOW operator gate; for service outcomes, child handoff and cancellation apply Playbooks/PLAY-0069-workflow-qualification-and-recovery.md, Two-outcome service contract. The failure_handling fields bind these owners to this FLOW.
+
+## Purpose and acceptance
+
+Coordinate the existing Prepare Library Source procedure into explicit governed phases and a bounded daily-learning branch. Each node names its real governing Playbook; repeated PLAY-0059 nodes invoke only the phase named in scope under that Playbook's phase contract. PLAY-0041 supplies the daily learning outcome. This preserves current owners and avoids inventing six Playbooks or duplicating their instructions.
+
+
+Qualify the exact destination definition with current affected-scope evidence and independent non-author acceptance. Every invocation requires current approval, fresh admission, actor access, and authority and runtime checks.
+
+The contract below alone owns transitions. Resolve consequential choices through Skills/SKILL-0318-grill-me.md. Apply the failure_handling owner references for recovery, continuation, limits and cancellation; this FLOW introduces no write retry or nested workflow.
+
+## Mandatory operating briefings
+
+Apply Workflows/README.md, Mandatory operating briefings, before operational effects and on entry to each existing declared step. The controls below bind that rule to the actual phase fields; PLAY-0069 retains recovery ownership. They are operator instructions, not installed runtime enforcement.
+
+## Minimum necessary execution
+
+Apply Workflows/README.md, Minimum necessary execution contract, to every phase and shared recovery. The step fields below supply this FLOW's concrete operation, evidence and exit bindings.
+
 ## Workflow contract
 
 ```workflow-json

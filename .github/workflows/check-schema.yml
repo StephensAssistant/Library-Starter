@@ -1,4 +1,4 @@
-name: Starter smoke tests
+name: Check frontmatter schema and starter setup
 on: [push, pull_request, workflow_dispatch]
 permissions:
   contents: read
@@ -13,5 +13,5 @@ jobs:
         with:
           python-version: '3.12'
       - run: python -m pip install -r .github/requirements-ci.txt
-      - run: python -B starter_record_smoke.py .
-      - run: python -B -m unittest discover -s .github/tests -p test_starter_graph.py -v
+      - run: python -B .github/scripts/run_release_preflight.py --starter-smoke
+      - run: python -B -m unittest discover -s .github/tests -p test_build_library_graph_layers.py -v

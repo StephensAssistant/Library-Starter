@@ -19,6 +19,28 @@ tags: [workflow, library, candidate-validation, autonomy]
 
 This definition requires destination-specific qualification. Source repository approval and evidence do not transfer. The draft grants no execution authority.
 
+## Reading and precedence
+
+The workflow-json contract owns states and transitions. Its governing Playbooks own each component procedure. Historical construction and qualification notes record prior events only; they grant no current authority and cannot override the current contract. Any conflict between current requirements blocks the dependent action and enters PLAY-0069; do not choose a convenient interpretation.
+
+“Run Commit Ready” selects FLOW-0002. FLOW-0001 and PLAY-0059 provide source preparation only. The parent first assesses exact-current accepted-result reuse; only a complete authoritative eligible=false result enters preparation and validation. Unknown, missing or contradictory reuse evidence enters recovery, not the new-execution branch.
+
+For a required new validation, apply PLAY-0056 “Required route assessment before a blocker or permission question” before source effects and before any missing-capability or permission claim. Local checkers MAY use exact canonical file inputs without a checkout when their actual input requirements permit it. No new clone/worktree is implied or authorised. Record supported alternatives and the precise unmet requirement before a decision from the Library owner is requested.
+
+For attempt/phase continuation apply Playbooks/PLAY-0059-commit-ready.md, Manual FLOW operator gate; for service outcomes, child handoff and cancellation apply Playbooks/PLAY-0069-workflow-qualification-and-recovery.md, Two-outcome service contract. The failure_handling fields bind these owners to this FLOW.
+
+## Failure feedback ownership
+
+For unhandled or unrecovered errors, apply Playbooks/PLAY-0069-workflow-qualification-and-recovery.md, Mandatory tracked repair and execution handback. The failure_handling fields below bind the controller to this FLOW; completion remains the candidate-ready/draft-PR predicate in workflow-json.
+
+## Mandatory operating briefings
+
+Apply Workflows/README.md, Mandatory operating briefings, before operational effects and on entry to each existing declared step. The controls below bind that rule to the actual phase fields; PLAY-0069 retains recovery ownership. They are operator instructions, not installed runtime enforcement.
+
+## Minimum necessary execution
+
+Apply Workflows/README.md, Minimum necessary execution contract, to every phase and shared recovery. The step fields below supply this FLOW's concrete operation, evidence and exit bindings.
+
 ## Workflow contract
 
 ```workflow-json
