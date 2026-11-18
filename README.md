@@ -10,7 +10,7 @@ Use this shared instruction in the host's startup settings, or as the startup in
 
 On first setup, check the host's configured startup instructions or installed adapter for this behaviour. If it is current, use it. If missing, place the quoted instruction in the host's supported startup settings during authorised setup. If a setting or adapter is stale, replace only its Library entry instruction at its maintained source during authorised setup and refresh the active copy. Preserve its other responsibilities. Where installation or settings access is unavailable, apply the instruction for the current session and report that persistent setup is pending. Normal Library requests can proceed through the approved connection without installing a skill.
 
-Verify setup in a fresh session using a named Ticket without reminding the assistant to open the Library. Check the activity for GitHub discovery before checkout commands, a complete remote `AGENTS.md` read and a read of the named record. A saved setting or a read receipt alone cannot establish the order of those actions.
+Verify setup in a fresh session. Connect the AI to the repository you own and select only that repository where the provider offers repository selection. Ask it to list branches and read `AGENTS.md` from `staging`. Check the activity for GitHub discovery before checkout commands and a complete remote read. A fresh Library has no Ticket, so use the first-Ticket check below after verifying read access.
 
 ## Work
 
@@ -41,7 +41,17 @@ Hats supply accountable experts; Skills supply individual capabilities; Playbook
 
 Create your own repository from the starter, or copy the tracked files into a new repository with a fresh history. Clone your copy, install Python 3.12 and run `python -m pip install -r .github/requirements-ci.txt`.
 
-Create a `staging` branch from `main`. Read [AGENTS.md](AGENTS.md) before adding records. Configure your repository’s access, branch protection and chosen AI connection separately. Start with repository-scoped read access.
+Create `staging` from your own `main`. Enable Actions and Issues and allow the reservation workflow to write to `staging`. Protect `main` where your GitHub plan supports it, and configure your chosen AI connection separately. Start with repository-scoped read access. Grant write access only for the effects you want the AI to perform.
+
+### First Ticket
+
+1. Read [AGENTS.md](AGENTS.md), the [Ticket creation guide](Tickets/_HOW-TO-CREATE.md) and the [ID reservation guide](.github/ID-RESERVATION.md).
+2. Manually run **Reserve permanent IDs** with `TICK 1`, or authorise your connected AI to submit an issue titled `[ID-RESERVE] TICK` if its connector supports creating issues. Wait for the returned reservation and confirm it is on `staging`.
+3. Create a fictional Ticket using the returned ID and the template, with a Planning companion when the guide requires one. Save on `staging` and read the saved files back. Verify the reservation is consumed and the starter checks pass. Leave publication to the repository owner.
+
+### Generated views
+
+A fresh Library can start from its canonical records. Generate the optional Board locally with `python .github/scripts/build_board.py`. The intent registry needs destination-specific routing configuration. Until it is configured, use the canonical folder guides and exact IDs for intake.
 
 Run `python -B .github/scripts/run_release_preflight.py --starter-smoke` against a committed checkout to exercise the record paths in a disposable clone.
 

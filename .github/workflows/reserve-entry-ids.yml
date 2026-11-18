@@ -1,0 +1,134 @@
+name: Reserve permanent IDs
+
+on:
+  workflow_dispatch:
+    inputs:
+      requests:
+        description: "Reservation request, for example: TICK 1, CHAT 1"
+        required: false
+        type: string
+      prefix:
+        description: "Legacy single-prefix input; ignored when requests is set"
+        required: false
+        type: string
+      count:
+        description: "Number of consecutive IDs to reserve"
+        required: true
+        default: "1"
+        type: string
+  issues:
+    types: [opened]
+
+concurrency:
+  group: library-permanent-id-allocation
+  cancel-in-progress: false
+
+jobs:
+  reserve:
+    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.issue.title, '[ID-RESERVE] ')
+    runs-on: ubuntu-latest
+    env:
+      LEARNING_ADVICE: "CORRECTION REQUIRED BEFORE RETRY: Inspect this failing run, correct only the relevant authorized input, and retry after that input changes. Preserve unrelated work and report an out-of-scope blocker."
+    permissions:
+      contents: write
+      issues: write
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: staging
+          fetch-depth: 0
+
+      - name: Resolve reservation request
+        id: request
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          INPUT_REQUESTS: ${{ inputs.requests }}
+          INPUT_PREFIX: ${{ inputs.prefix }}
+          INPUT_COUNT: ${{ inputs.count }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+        run: |
+          if [[ "$EVENT_NAME" == "issues" ]]; then
+            request=$(python3 .github/scripts/parse_id_reservation_request.py "$ISSUE_TITLE")
+            requested_by="$ISSUE_AUTHOR"
+          else
+            if [[ -n "$INPUT_REQUESTS" ]]; then
+              request=$(python3 .github/scripts/parse_id_reservation_request.py "[ID-RESERVE] $INPUT_REQUESTS")
+            elif [[ -n "$INPUT_PREFIX" ]]; then
+              request=$(python3 .github/scripts/parse_id_reservation_request.py "[ID-RESERVE] $INPUT_PREFIX $INPUT_COUNT")
+            else
+              echo "Set requests or the legacy prefix input."
+              exit 1
+            fi
+            requested_by="$GITHUB_ACTOR"
+          fi
+          requests_json=$(jq -c '.requests' <<<"$request")
+          jq -e 'type == "array" and length > 0' <<<"$requests_json" >/dev/null
+          echo "requests_json=$requests_json" >> "$GITHUB_OUTPUT"
+          echo "requested_by=$requested_by" >> "$GITHUB_OUTPUT"
+
+      - name: Verify issue requester can write
+        if: github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REQUESTED_BY: ${{ steps.request.outputs.requested_by }}
+        run: |
+          permission=$(gh api "repos/${GITHUB_REPOSITORY}/collaborators/${REQUESTED_BY}/permission" --jq '.permission')
+          case "$permission" in
+            admin|maintain|write) ;;
+            *) echo "Requester lacks write permission: $permission"; exit 1 ;;
+          esac
+
+      - name: Reserve and push with bounded compare-and-swap retry
+        id: reserve
+        env:
+          REQUESTS_JSON: ${{ steps.request.outputs.requests_json }}
+          REQUESTED_BY: ${{ steps.request.outputs.requested_by }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin staging
+            git reset --hard origin/staging
+            ids=$(python3 .github/scripts/allocate_ids.py "$REQUESTS_JSON" --requested-by "$REQUESTED_BY")
+            git add .github/id-reservations.json
+            git commit -m "reserve: $ids"
+            if git push origin HEAD:staging; then
+              echo "ids=$ids" >> "$GITHUB_OUTPUT"
+              echo "Reserved: $ids"
+              exit 0
+            fi
+            echo "Staging changed during allocation (attempt $attempt/5); retrying from latest head."
+          done
+          echo "Unable to reserve after five compare-and-swap attempts."
+          exit 1
+
+      - name: Return reservation to issue requester
+        if: github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          IDS: ${{ steps.reserve.outputs.ids }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body "Reserved permanent ID(s): **$IDS**. Use these IDs for the consuming Library record(s) on staging; the reservation may not merge without its consuming file."
+          gh issue close "$ISSUE_NUMBER" --reason completed
+
+      - name: Report correction after reservation failure
+        if: failure() && !cancelled()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            core.warning(process.env.LEARNING_ADVICE);
+            await core.summary
+              .addHeading("Correction required before retry", 2)
+              .addRaw(process.env.LEARNING_ADVICE)
+              .write();
+            if (context.eventName === "issues") {
+              const runUrl = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}`;
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `${process.env.LEARNING_ADVICE}\n\nFailing run: ${runUrl}`,
+              });
+            }
