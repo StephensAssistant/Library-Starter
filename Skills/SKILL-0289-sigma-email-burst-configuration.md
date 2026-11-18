@@ -58,4 +58,8 @@ Stop with one reviewable burst configuration and verified recipient mapping. Cla
 
 ## Destination verification
 
+Verify the exact tenant, published workbook version, UI or API mechanism, permissions, scope-to-recipient mapping and approved test destination. Use a verified field of the supported type as the split key and verify that the bound control appears in the target version and page. Confirm native eligibility rather than treating an echoed API setting as proof.
+
+Retain the relevant request and response projections and request IDs with credentials removed. Verify live settings, recipients, pause state and output independently. If a submission times out or reports an unsupported mechanism, inspect actual effects and current support before retry or escalation. Do not switch delivery routes without separate authority.
+
 Check the live tenant, current API schema, intended recipient and permissions before preparing a schedule. Keep design and mutation approvals separate. Verify exact settings and status with readback, and use delivery evidence before claiming delivery. Confirm paused schedules retain their intended settings. If a mechanism is unsupported or readback differs, stop and investigate before switching delivery routes.

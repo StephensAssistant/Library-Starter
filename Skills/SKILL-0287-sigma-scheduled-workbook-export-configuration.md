@@ -55,4 +55,10 @@ Stop with a reviewable schedule configuration and named owner; claim a configure
 
 ## Destination verification
 
+Record the exact environment, workbook version, page, scope, schedule, approved subscribers, destination, actor, approver and effective permissions. Reject an unset, NULL or malformed scope. A hidden control does not enforce row-level security. Verify scope membership, filter semantics, report grain and authorised recipients separately.
+
+Before subscriber removal or a scope edit, verify that all affected active schedules are paused. Recompute both old and new scopes, preserve unaffected subscribers, and verify complete targets before resuming. A same-scope target resync and a changed-scope rebind require separate checks. If the available API omits recipients from readback, obtain another authoritative receipt or stop. Timeout or unclear effects require readback before retry.
+
+Check the current compiled request schema for nested layout or control fields. A schema permitting a field does not prove tenant enablement, and a readback enum does not establish a writable field. Establish the full baseline before exercising edits and verify that unrelated settings survive. Treat any create-then-pause approach as potentially active until observed, with a separate owner-approved test and recovery plan.
+
 Check the live tenant, current API schema, intended recipient and permissions before preparing a schedule. Keep design and mutation approvals separate. Verify exact settings and status with readback, and use delivery evidence before claiming delivery. Confirm paused schedules retain their intended settings. If a mechanism is unsupported or readback differs, stop and investigate before switching delivery routes.
