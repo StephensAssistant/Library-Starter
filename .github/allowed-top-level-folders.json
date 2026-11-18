@@ -1,0 +1,20 @@
+{
+  "_comment": "Planning supports Projects and Tickets. Reference holds source evidence. Workflows and Transcriptions are governed types. Keep transient scratch outside the repository.",
+  "folders": [
+    "Projects",
+    "Knowledge",
+    "People",
+    "Decisions",
+    "Tickets",
+    "Chats",
+    "Artifacts",
+    "Playbooks",
+    "Skills",
+    "Catalog",
+    "AIHats",
+    "Planning",
+    "Reference",
+    "Workflows",
+    "Transcriptions"
+  ]
+}

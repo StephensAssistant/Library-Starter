@@ -1,0 +1,12 @@
+{
+  "extends": "base",
+  "status_enum": ["active", "blocked", "done", "archived"],
+  "work_state_enum": ["backlog", "ready", "doing", "review", "waiting", "done"],
+  "priority_enum": ["unassessed", "low", "medium", "high", "urgent"],
+  "effort_enum": ["unknown", "quick", "small", "medium", "large", "epic"],
+  "work_class_enum": ["admin", "build", "delivery", "enablement", "improvement", "incident", "investigation", "learning", "maintenance", "operational", "operations", "recovery", "support", "support_request", "unassessed"],
+  "operating_fields_when_status_in": {
+    "statuses": ["active", "blocked", "done"],
+    "fields": ["owner", "external_ref", "priority", "effort", "estimate_minutes", "work_class", "work_state", "due", "next_action", "waiting_on", "review_on", "sprint", "depends_on", "started", "completed", "evidence"]
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "_comment": "Base fields every entry needs, per 00-LIBRARY-RULES.md §4 and §4b. Not a real JSON Schema - a minimal custom format read by check_schema.py, to avoid an external dependency in CI.",
+  "required": ["id", "type", "title", "status", "created", "updated", "links", "tags"]
+}

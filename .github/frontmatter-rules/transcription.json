@@ -1,0 +1,23 @@
+{
+  "extends": "base",
+  "required": [
+    "id",
+    "type",
+    "title",
+    "status",
+    "created",
+    "updated",
+    "links",
+    "tags",
+    "recorded_at",
+    "source",
+    "source_reference",
+    "participants",
+    "transcript_status",
+    "link_review_status",
+    "link_reviewed_at"
+  ],
+  "status_enum": ["current", "superseded"],
+  "transcript_status_enum": ["raw", "reviewed", "verified"],
+  "link_review_status_enum": ["pending", "complete"]
+}

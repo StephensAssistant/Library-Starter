@@ -1,0 +1,20 @@
+{
+  "_comment": "The prefix determines the governed folder. Used by check_ids.py to validate that every new entry has the correct folder prefix and next sequential ID.",
+  "folders": {
+    "Projects": "PROJ",
+    "Knowledge": "KNOW",
+    "People": "PERS",
+    "Decisions": "DEC",
+    "Tickets": "TICK",
+    "Artifacts": "ART",
+    "Playbooks": "PLAY",
+    "Skills": "SKILL",
+    "AIHats": "HAT",
+    "Workflows": "FLOW",
+    "Transcriptions": "TRAN"
+  },
+  "shared_files": {
+    "Chats": "CHAT"
+  },
+  "_chats_note": "Chat IDs are allocated by the serialized reservation workflow, stored inside daily Markdown files, and validated by check_chat_ids.py rather than the per-file check."
+}

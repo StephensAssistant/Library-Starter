@@ -1,0 +1,1 @@
+{ "extends": "base", "status_enum": ["current", "archived"] }

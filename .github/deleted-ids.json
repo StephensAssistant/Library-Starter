@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "deletions": [
+    {
+      "id": "PLAY-0057",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Omitted from the current starter baseline; retain the original capability numbering.",
+      "replacement": null
+    },
+    {
+      "id": "PLAY-0058",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Omitted from the current starter baseline; retain the original capability numbering.",
+      "replacement": null
+    },
+    {
+      "id": "PLAY-0061",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Omitted from the current starter baseline; retain the original capability numbering.",
+      "replacement": null
+    },
+    {
+      "id": "PLAY-0062",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Omitted from the current starter baseline; retain the original capability numbering.",
+      "replacement": null
+    },
+    {
+      "id": "PLAY-0066",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Omitted from the current starter baseline; retain the original capability numbering.",
+      "replacement": null
+    },
+    {
+      "id": "PLAY-0067",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Omitted from the current starter baseline; retain the original capability numbering.",
+      "replacement": null
+    },
+    {
+      "id": "PLAY-0068",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Omitted from the current starter baseline; retain the original capability numbering.",
+      "replacement": null
+    },
+    {
+      "id": "PLAY-0070",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Omitted from the current starter baseline; retain the original capability numbering.",
+      "replacement": null
+    },
+    {
+      "id": "HAT-0021",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Omitted from the current starter baseline; retain the original capability numbering.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0006",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0021",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0033",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0043",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0075",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0076",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0077",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0078",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0079",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0150",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0153",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0174",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0225",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0244",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0277",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0290",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0292",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0294",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0295",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0296",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0297",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0300",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0301",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0312",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    },
+    {
+      "id": "SKILL-0322",
+      "deleted_on": "2026-11-18",
+      "authorized_by": "Library owner",
+      "reason": "Excluded from the starter baseline. Reserve this number to preserve source capability IDs.",
+      "replacement": null
+    }
+  ]
+}

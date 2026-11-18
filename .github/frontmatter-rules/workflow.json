@@ -1,0 +1,21 @@
+{
+  "extends": "base",
+  "required": [
+    "id",
+    "type",
+    "title",
+    "status",
+    "created",
+    "updated",
+    "links",
+    "tags",
+    "owner",
+    "author",
+    "review_status",
+    "trigger_phrases"
+  ],
+  "status_enum": [
+    "current",
+    "superseded"
+  ]
+}

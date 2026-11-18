@@ -1,0 +1,16 @@
+{
+  "_comment": "Maps a type folder to its frontmatter rules file. Chats deliberately excluded - no per-entry frontmatter, per \u00a74's storage exception.",
+  "folders": {
+    "Projects": "project.json",
+    "Tickets": "ticket.json",
+    "Knowledge": "knowledge.json",
+    "People": "person.json",
+    "Decisions": "decision.json",
+    "Artifacts": "artifact.json",
+    "Playbooks": "playbook.json",
+    "Skills": "skill.json",
+    "AIHats": "aihat.json",
+    "Workflows": "workflow.json",
+    "Transcriptions": "transcription.json"
+  }
+}

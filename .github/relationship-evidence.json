@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "scoring_model": "relationship-confidence-v1",
+  "edges": []
+}

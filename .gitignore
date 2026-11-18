@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+similarity_findings.json
+embedded_script_findings.json
